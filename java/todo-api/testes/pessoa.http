@@ -6,8 +6,18 @@ POST {{url}}/pessoa
 Content-Type: application/json
 
 {
-    "nome": "Juca da Silva",
-    "email": "juca@gmail.com",
+    "nome": "Ana da Silva",
+    "email": "ana@gmail.com",
     "senha": "1234",
     "nascimento": "1985-01-04"
 }
+
+### Obter todas as pessoas
+GET {{url}}/pessoa
+
+### Obter uma pessoa pelo ID
+GET {{url}}/pessoa/41554152-8bb0-485f-b5cc-2d9a6ac4043b
+
+
+### Deletar
+DELETE {{url}}/pessoa/f82ffdd2-4600-4a91-89fd-e90df0eddf31
