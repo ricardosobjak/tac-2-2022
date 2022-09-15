@@ -1,0 +1,13 @@
+@url=http://localhost:8080
+
+
+### Salvar Pessoa
+POST {{url}}/pessoa
+Content-Type: application/json
+
+{
+    "nome": "Juca da Silva",
+    "email": "juca@gmail.com",
+    "senha": "1234",
+    "nascimento": "1985-01-04"
+}
