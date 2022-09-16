@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.edu.utfpr.todoapi.dto.PessoaDTO;
 import br.edu.utfpr.todoapi.model.Pessoa;
 import br.edu.utfpr.todoapi.repositories.PessoaRepository;
+import net.bytebuddy.asm.Advice.Enter;
 
 @RestController
 @RequestMapping("pessoa")
@@ -86,8 +87,22 @@ public class PessoaController {
     }
 
     @PutMapping("{id}")
-    public String update(@PathVariable Long id) {
-        return "Atualizar";
+    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody PessoaDTO pessoaDTO) {
+        // Validação do UUID
+        UUID uuid;
+        try {
+            uuid = UUID.fromString(id);
+        } catch (Exception ex) {
+            return ResponseEntity.badRequest().body("Formato de ID inválido");
+        }
+
+        Optional<Pessoa> opt = pessoaRepository.findById(uuid);
+
+        Pessoa p = opt.get();
+        BeanUtils.copyProperties(pessoaDTO, p);
+        p.setUpdatedAt(LocalDateTime.now(ZoneId.of("UTC")));
+
+        return ResponseEntity.ok().body(pessoaRepository.save(p));
     }
 
     @DeleteMapping("{id}")
