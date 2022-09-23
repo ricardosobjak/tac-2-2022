@@ -1,0 +1,17 @@
+@URL=http://localhost:3000
+
+### Criar pessoa
+POST {{URL}}/pessoa
+Content-Type: application/json
+
+{
+    "nome": "Alfredo",
+    "CPF": "1234"
+}
+
+### Atualizar
+PUT {{URL}}/pessoa/1
+
+### Deletar
+DELETE {{URL}}/pessoa/2
+
