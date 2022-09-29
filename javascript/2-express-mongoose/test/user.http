@@ -1,0 +1,33 @@
+@URL=http://localhost:3000
+
+### Cadastrar user
+POST {{URL}}/users
+Content-Type: application/json
+
+{
+    "name": "Juca Silva",
+    "email": "juca@gmail.com",
+    "login": "juca1",
+    "password": "123"
+}
+
+
+### Obter todos
+GET {{URL}}/users
+
+
+### Obter 1 pelo ID
+GET {{URL}}/users/632df3f20b49e95ccd671615
+
+
+
+### Atualizar user
+PUT {{URL}}/users/632df7fe097530ef94286245
+Content-Type: application/json
+
+{
+    "name": "Juca Silva",
+    "email": "juca@gmail.com",
+    "login": "juca1",
+    "password": "123"
+}

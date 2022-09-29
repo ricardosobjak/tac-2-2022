@@ -1,0 +1,11 @@
+@URL=http://localhost:3000
+
+### Autenticar
+POST {{URL}}/auth
+Content-Type: application/json
+
+{
+    "login": "juca1",
+    "password": "123"
+}
+
