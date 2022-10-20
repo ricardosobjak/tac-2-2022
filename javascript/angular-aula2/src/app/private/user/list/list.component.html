@@ -1,0 +1,22 @@
+<h1>Pessoas</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th></th>
+        </tr>
+        
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let pes of pessoas">
+            <td><img src="{{ pes.avatar }}"></td>
+            <td>{{ pes.first_name }}</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
