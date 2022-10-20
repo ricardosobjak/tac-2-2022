@@ -1,0 +1,10 @@
+@base_address = http://localhost:3000
+
+### Método de autenticação (Obter o token JWT)
+POST {{base_address}}/auth HTTP/1.1
+content-type: application/json
+
+{
+    "username": "juca",
+    "password": "1234"
+}

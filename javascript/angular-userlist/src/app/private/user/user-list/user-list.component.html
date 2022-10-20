@@ -1,0 +1,47 @@
+<h3 class="my-4">
+  Users
+  <button class="btn btn-primary" [routerLink]="['new']" routerLinkActive="router-link-active"><i class="fas fa-plus-circle"></i> Novo</button>
+</h3>
+
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of apiResponse?.data">
+        <td>
+          <img [src]="user.avatar" width="32" class="bd-placeholder-img mr-2 rounded" />
+        </td>
+        <td>
+          <a [routerLink]="[user.id]" routerLinkActive="router-link-active">{{ user.first_name }} {{ user.last_name }}</a>
+        </td>
+        <td>{{ user.email }}</td>
+        <td>
+          <button class="btn btn-light"><i class="fas fa-trash"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <nav aria-label="Navigation">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.active]="activePage === page + 1" *ngFor="let page of pages(apiResponse?.total_pages)">
+        <a class="page-link" (click)="loadUsers(page + 1)">{{ page + 1 }}</a>
+      </li>
+
+      <li>
+        <select class="form-select ms-2" [(ngModel)]="perPage" (change)="loadUsers(activePage)">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+        </select>
+      </li>
+    </ul>
+  </nav>
+</div>

@@ -1,4 +1,11 @@
 @URL=http://localhost:3000
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6Imp1Y2ExIiwiaWF0IjoxNjY0NTU5OTU2LCJleHAiOjE2NjQ2NDYzNTZ9.BQ2opJbopC_jJ-AcsT8Pa3WOB4lKSFqd-QBcvnLRjLs
+
+
+### Obter todos
+GET {{URL}}/users
+Authorization: {{token}}
+
 
 ### Cadastrar user
 POST {{URL}}/users
@@ -12,21 +19,20 @@ Content-Type: application/json
 }
 
 
-### Obter todos
-GET {{URL}}/users
-
 
 ### Obter 1 pelo ID
 GET {{URL}}/users/632df3f20b49e95ccd671615
+Authorization: xxxxxx
 
 
 
 ### Atualizar user
 PUT {{URL}}/users/632df7fe097530ef94286245
+Authorization: xxxxxxxxx
 Content-Type: application/json
 
 {
-    "name": "Juca Silva",
+    "name": "Ana Maria Braga",
     "email": "juca@gmail.com",
     "login": "juca1",
     "password": "123"

@@ -1,0 +1,46 @@
+@base_address = http://localhost:3000
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjQ4OTIxNzI2LCJleHAiOjE2NDkwMDgxMjZ9.-peWsnDbkJiMNYGMuGHg1LKw3TSzftt8wWrYwKHJHoc
+
+
+### Obter todos os afazeres do usuário autenticado no token
+GET {{base_address}}/todo HTTP/1.1
+Authorization: {{token}}
+
+
+
+### Obter um afazer pelo ID
+GET {{base_address}}/todo/1 HTTP/1.1
+Authorization: {{token}}
+
+
+
+### Criar um afazer
+POST {{base_address}}/todo HTTP/1.1
+content-type: application/json
+Authorization: {{token}}
+
+{
+    "title": "Reunião",
+    "description": "Reunião de pais na escola das crianças",
+    "date": "2022-03-31T19:30:00",
+    "done": false
+}
+
+
+
+### Atualizar um afazer
+PUT {{base_address}}/users/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Carlos",
+    "email": "carlos@utfpr.edu.br",
+    "login": "carlos",
+    "password": "1234"
+}
+
+
+
+### Deletar um afazer
+DELETE {{base_address}}/todo/1 HTTP/1.1
+Content-Type: application/json

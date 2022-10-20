@@ -2,17 +2,19 @@ const express = require('express');
 const User = require('../models/User');
 const router = express.Router();
 
+const isAuthorized = require('../middleware/isAuthorized');
+
 /**
  * Obter todos os usuários
  */
-router.get('/', async function (req, res, next) {
+router.get('/', isAuthorized, async function (req, res, next) {
   res.json(await User.find());
 });
 
 /**
  * Obter um usuário pelo ID
  */
-router.get('/:id', async (req, res) => {
+router.get('/:id', isAuthorized, async (req, res) => {
   const { id } = req.params;
 
   const user = await User.findById(id);
@@ -44,7 +46,7 @@ router.post('/', async (req, res) => {
 });
 
 // Atualizar um usuário
-router.put('/:id', async (req, res) => {
+router.put('/:id', isAuthorized, async (req, res) => {
   const json = req.body;
   const { id } = req.params; // const id = req.params.id;
 
@@ -53,6 +55,11 @@ router.put('/:id', async (req, res) => {
   //User.find({_id: id}); mesmo que a linha anterior
 
   if (user) {
+    // Verifica se é o próprio usuário tentando se atualizar
+    if(user.login != req.login) {
+      return res.status(403).json({message: 'Sem permissão'});
+    }
+
     json.createdAt = user.createdAt;
     json.updatedAt = new Date();
 
@@ -69,7 +76,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // Deletar um usuario
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', isAuthorized, async (req, res) => {
   const { id } = req.params;
 
   const result = await User.deleteOne({ _id: id });

@@ -1,0 +1,28 @@
+<hr>
+<h2>Primeiro componente</h2>
+
+<button (click)="cliqueDoBotao(nome)">Clique Aqui!</button>
+
+Meu nome é: {{ nome }}
+<br>
+
+<input type="text" [value]="nome">
+
+<input type="text" [(ngModel)]="nome">
+
+<hr>
+
+<div *ngIf="nome.toLowerCase() === 'bill'">
+    Bora Mulher do Bill!
+</div>
+
+
+<ul>
+    <li *ngFor="let i of [0,1,2,3,4,5,6,7,8,9,10]">
+        5 x {{ i }} = {{ 5 * i}}
+    </li>
+</ul>
+
+<h2 *ngFor="let fruta of frutas">
+    {{fruta}}
+</h2>
