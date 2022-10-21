@@ -1,1 +1,27 @@
-<p>form works!</p>
+<h1>Pessoa</h1>
+
+<div class="container">
+<form [formGroup]="form">
+    <div class="form-group">
+        <label class="form-label">Nome</label>
+        <input type="text" class="form-control" 
+                placeholder="Nome" formControlName="nome">
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">Sobrenome</label>
+        <input type="text" class="form-control" placeholder="Sobrenome"
+            formControlName="sobrenome">
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">E-mail</label>
+        <input type="text" class="form-control" placeholder="fulano@provedor.com"
+            formControlName="email">
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-primary my-3" (click)="salvar()">Salvar</button>
+    </div>
+</form>
+</div>

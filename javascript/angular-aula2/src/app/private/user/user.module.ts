@@ -4,6 +4,7 @@ import { ListComponent } from './list/list.component';
 import { FormComponent } from './form/form.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http'; 
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', component: ListComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes),
     HttpClientModule
   ]
